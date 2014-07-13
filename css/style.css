@@ -1,3 +1,9 @@
+
+/* 通用 */
 * { font-family: "微软雅黑", "Microsoft YaHei"}
-.alignCenter { text-align: center;}
+.alignCenter { text-align: center;} 
+
+/* 高级功能 */
+.AF { margin-top:30px;} 
+
 footer { position: absolute; bottom: 5px; width: 100%; text-align: center; font-family: "consolas";}
