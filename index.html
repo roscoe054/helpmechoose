@@ -1,76 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>帮我选</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>帮我选</title>
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<!--[if lt IE 9]>
-	  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/foodInit.js"></script>
-	<script src="js/main.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/foodInit.js"></script>
+		<script src="js/main.js"></script>
 
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-2 col-md-4"></div>
-			<div class="col-xs-12 col-sm-8 col-md-4">
-				<h2>今天吃神马？</h2>
-				<div class="jumbotron alignCenter">
-					<p id="canteen"></p>
-					<p id="food">点击按钮开始哟！</p>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2 col-md-4"></div>
+				<div class="col-xs-12 col-sm-8 col-md-4">
+					<h2>今天吃神马？</h2>
+					<div class="jumbotron alignCenter">
+						<p id="canteen"></p>
+						<p id="food">点击按钮开始哟！</p>
+					</div>
+					<p class="alignCenter">
+						<button class="btn btn-success btn-lg" data-loading-text="让我想想..." role="button" id="btnHelp">帮我选</button>
+					</p>
+
+					<!-- 更多功能 -->
+					<div class="panel-group AF" id="accordion">
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title alignCenter">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+									高级功能
+								</a></h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								<div class="panel-body">
+									<label>我只想吃这一家：</label>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="canteenChoose">
+											选择餐厅 <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu">
+											<li>
+												<a href="#" id="canteenChoose12">一饭二</a>
+											</li>
+											<!-- <li><a href="#" id="canteenChoose13">一饭三</a></li> -->
+											<li>
+												<a href="#" id="canteenChoose14">一饭四</a>
+											</li>
+											<!-- <li><a href="#" id="canteenChoose15">一饭五</a></li> -->
+											<li>
+												<a href="#" id="canteenChoose16">一饭六</a>
+											</li>
+											<!-- <li><a href="#" id="canteenChoose21">二饭一</a></li> -->
+											<!-- <li><a href="#" id="canteenChoose22">二饭二</a></li> -->
+											<li class="divider"></li>
+											<li>
+												<a href="#" id="canteenChooseWhatever">还是随便吧</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
 				</div>
-				<p class="alignCenter"><button class="btn btn-success btn-lg" role="button" id="btnHelp">帮我选</button></p>
-
-				<!-- 更多功能 -->
-				<div class="panel-group AF" id="accordion">
-
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title alignCenter">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				          高级功能 
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        <label>我只想吃这一家：</label>
-				        <div class="btn-group">
-				          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="canteenChoose">
-				            选择餐厅 <span class="caret"></span>
-				          </button>
-				          <ul class="dropdown-menu" role="menu">
-				            <li><a href="#" id="canteenChoose12">一饭二</a></li>
-				            <!-- <li><a href="#" id="canteenChoose13">一饭三</a></li> -->
-				            <li><a href="#" id="canteenChoose14">一饭四</a></li>
-				            <!-- <li><a href="#" id="canteenChoose15">一饭五</a></li> -->
-				            <li><a href="#" id="canteenChoose16">一饭六</a></li>
-				            <!-- <li><a href="#" id="canteenChoose21">二饭一</a></li> -->
-				            <!-- <li><a href="#" id="canteenChoose22">二饭二</a></li> -->
-				            <li class="divider"></li>
-				            <li><a href="#" id="canteenChooseWhatever">还是随便吧</a></li>
-				          </ul>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-
-				</div>
-
+				<div class="col-sm-2 col-md-4"></div>
 			</div>
-			<div class="col-sm-2 col-md-4"></div>
 		</div>
-	</div>
-	<footer>Powered by <a href="#">Jasin Yip</a></footer>
-</body>
+		<footer>Powered by <a href="#">Jasin Yip</a></footer>
+	</body>
 </html>

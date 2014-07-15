@@ -1,40 +1,41 @@
-var canteen = [];				//储存餐厅名
-var food 	= [];				//储存餐厅对应的食物名
-var canteenCount = 0;			//餐厅数量
-var foodCount = [];				//储存餐厅对应的食物数量
-var canteenFloor = [12,14,16];	//餐厅层数
-var canteenRange = [];			//餐厅随机范围
+var canteen = [];					//储存餐厅名
+var food = [];						//储存餐厅对应的食物名
+var canteenCount = 0;				//餐厅数量
+var foodCount = [];					//储存餐厅对应的食物数量
+var canteenFloor = [12, 14, 16];	//餐厅层数
+var canteenRange = [];				//餐厅随机范围
 
-var AFEnable = false;			//高级功能启用状态
+var AFEnable = false;				//高级功能启用状态
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	init();
 
 	//初始化一些click事件
-	$("#btnHelp").click(function(){
-		timerTimeout = setTimeout("clearTimeout(timerTimeout);	timerInterval = window.clearInterval(timerInterval);", 500);
+	$("#btnHelp").click(function() {
+		timerTimeout = setTimeout("timeout()", 500);
 		timerInterval = setInterval("helpMeChoose()", 80);
+		$(this).button("loading");
 	});
-	canteenFloor.forEach(function(item){
-		$("#canteenChoose"+item).click(function(){
-			$("#canteenChoose").html($("#canteenChoose"+item).html()+" <span class=\"caret\"></span>");
+	canteenFloor.forEach(function(item) {
+		$("#canteenChoose" + item).click(function() {
+			$("#canteenChoose").html($("#canteenChoose" + item).html() + " <span class=\"caret\"></span>");
 		});
 	});
-	$("#canteenChooseWhatever").click(function(){
-		$("#canteenChoose").html($("#canteenChooseWhatever").html()+" <span class=\"caret\"></span>");
+	$("#canteenChooseWhatever").click(function() {
+		$("#canteenChoose").html($("#canteenChooseWhatever").html() + " <span class=\"caret\"></span>");
 	});
 
 	//初始化「高级功能」的事件
-	$('#collapseOne').on('show.bs.collapse', function(){
+	$('#collapseOne').on('show.bs.collapse', function() {
 		AFEnable = true;
 	});
-	$('#collapseOne').on('hide.bs.collapse', function(){
+	$('#collapseOne').on('hide.bs.collapse', function() {
 		AFEnable = false;
-	});	
+	});
 });
 
-function init(){
+function init() {
 
 	//初始化饭堂，注释掉的是未支持的餐厅
 	canteen.push("一饭二");
@@ -49,7 +50,7 @@ function init(){
 	canteenRange = canteen;
 
 	//初始化饭堂内的食物
-	for (var i in canteen){
+	for (var i in canteen) {
 		food[canteen[i]] = [];
 	}
 
@@ -60,22 +61,22 @@ function init(){
 	canteenCount = canteen.length;
 
 	//获取每个饭堂的食物种类数量
-	for (var i=0; i<canteenCount; i++){
+	for (var i = 0; i < canteenCount; i++) {
 		foodCount[i] = food[canteen[i]].length;
 	}
 }
 
-function helpMeChoose(){
+function helpMeChoose() {
 
 	//「高级功能」模块
 	if (AFEnable) {
-		if (($("#canteenChoose").html().indexOf("选择餐厅") != -1) || ($("#canteenChoose").html().indexOf("还是随便吧") != -1)){
+		if (($("#canteenChoose").html().indexOf("选择餐厅") != -1) || ($("#canteenChoose").html().indexOf("还是随便吧") != -1)) {
 			//全范围随机
 			canteenRange = canteen;
-		}else{
+		} else {
 			canteenRange = [$("#canteenChoose").html().substr(0, 3)];
 		}
-	}else{
+	} else {
 		canteenRange = canteen;
 	}
 
@@ -83,9 +84,9 @@ function helpMeChoose(){
 	var canteenNum;
 	var canteenShow;
 
-	if (canteenRange.length > 1){
+	if (canteenRange.length > 1) {
 		canteenNum = rand(canteenCount);
-	}else{
+	} else {
 		canteenNum = $.inArray(canteenRange[0], canteen);
 	}
 	canteenShow = canteen[canteenNum];
@@ -99,8 +100,15 @@ function helpMeChoose(){
 	$("#food").html(randFood);
 }
 
-function rand(n){
-	return Math.floor(Math.random()*(n));
+function rand(n) {
+	return Math.floor(Math.random() * (n));
 }
 
-console.log("HelpMeChoose\nVersion:1.2\n\nJasin Yip\nE-mail:yejunxing@gmail.com");
+function timeout() {
+	clearTimeout(timerTimeout);
+	timerInterval = window.clearInterval(timerInterval);
+	$("#btnHelp").button("reset");
+	$("#btnHelp").html("再选选");
+}
+
+console.log("HelpMeChoose\nVersion:1.2.1\n\nJasin Yip\nE-mail:yejunxing@gmail.com"); 
