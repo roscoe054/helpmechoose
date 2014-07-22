@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>食物添加页 - 帮我选</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="../css/public.css">
+	<link rel="stylesheet" href="../css/footer.css">
+
+<script>
+	$(document).ready(function(){
+
+		$("#addResult").css("display", "none");
+		
+		$("#submit").click(function(){
+
+			$("#addResult").css("display", "block");
+			$("#addResult").removeClass("alert-info alert-danger").addClass("alert-warning");
+			$("#addResult strong").html("正在提交...");
+
+			var centerName = $("#centerName").val();
+			var canteen = $("#canteen").val();
+			var foods = $("textarea").val().split("\n");
+
+			$.post(
+				"addFoods.php",
+				{
+					centerName : centerName,
+					canteen : canteen,
+					foods : JSON.stringify(foods)
+				},
+				function(data, st){
+					if (data == "SUCCESS"){
+						$("#addResult").removeClass("alert-warning alert-danger").addClass("alert-info");
+						$("#addResult strong").html("添加成功！");
+						$("textarea").val("");
+					}else{
+						$("#addResult").removeClass("alert-warning").addClass("alert-danger");
+						$("#addResult strong").html("数据库配置出错，请联系管理员！");
+					}
+				});
+		});
+	});	
+</script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 ">
+				<h1>帮我选</h1>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">食物 添加页</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-horizontal">
+
+							<!-- 警告框 -->
+							<div class="alert alert-info alert-dismissible" role="alert" id="addResult">
+								<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								<strong>添加成功!</strong>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">中心区域</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="centerName">
+									  <script>
+									  	document.write("<option>广东轻工职业技术学院(南海校区)</option>");
+									  </script>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">餐厅</label>
+								<div class="col-sm-8">
+									<select class="form-control" id="canteen">
+									  <option>一饭二</option>
+									  <option>一饭四</option>
+									  <option>一饭六</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">食物列表</label>
+								<div class="col-sm-8">
+									<textarea class="form-control" rows="10" style="resize:none" placeholder="每行填一种食物"></textarea>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-2">
+									<button class="btn btn-primary" id="submit">提交</button>
+								</div>
+								<div class="col-sm-2">
+									<button type="reset" class="btn btn-primary">重置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../footer.js"></script>
+</body>
+</html>
