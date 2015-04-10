@@ -5,7 +5,7 @@ var helpChooseApp = angular.module("helpChooseApp",[
     'ngRoute','ngTouch','ngStorage','hcControllers'
 ]);
 
-var rootPath = '/partials/'
+var rootPath = 'http://' + location.hostname + '/partials/'
 
 helpChooseApp.config(function($routeProvider){
     $routeProvider.when('/list',{
