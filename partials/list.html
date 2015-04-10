@@ -1,0 +1,34 @@
+<ul class="foods-list">
+    <li ng-repeat="food in $storage.foods" ng-click="editFood(food, $index)">{{food.name}}</li>
+</ul>
+<div class="add-food-wrap" ng-click="addFood()">
+    添加一个
+</div>
+<div class="mask" ng-show="maskEditVisible">
+    <div class="note-wrap">
+        <div class="note-content">
+            <input class="input-name" type="text" ng-model="editName" placeholder="要删除吗？"/>
+            <a class="empty-input" href="javascript:void(0);"
+               ng-click="emptyEditInput()"
+               ng-show="editName !== ''">x</a>
+        </div>
+        <div class="ope-wrap">
+            <a href="javascript:void(0);" ng-click="editConfirm()"><span>确定</span></a>
+            <a href="javascript:void(0);" ng-click="editCancel()"><span>取消</span></a>
+        </div>
+    </div>
+</div>
+<div class="mask" ng-show="maskAddVisible">
+    <div class="note-wrap">
+        <div class="note-content">
+            <input class="input-name" type="text" ng-model="addName" placeholder="输入一个名字"/>
+            <a class="empty-input" href="javascript:void(0);"
+               ng-click="emptyAddInput()"
+               ng-show="addName !== ''">x</a>
+        </div>
+        <div class="ope-wrap">
+            <a href="javascript:void(0);" ng-click="addConfirm()"><span>确定</span></a>
+            <a href="javascript:void(0);" ng-click="addCancel()"><span>取消</span></a>
+        </div>
+    </div>
+</div>

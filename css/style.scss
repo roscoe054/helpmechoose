@@ -1,0 +1,201 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
+div,p,h1,h2,h3,h4,ul,li{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    font-family: "微软雅黑", "Microsoft YaHei";
+    font-size: 18px;
+}
+ul{
+    list-style: none;
+}
+h1{
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+
+    .return{
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        background-color: #999;
+        border-radius: 50%;
+    }
+}
+
+a{
+    text-decoration: none;
+    color: #666;
+}
+
+.container{
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100%;
+    padding: 0 0 60px;
+    text-align: center;
+
+    .choose-wrap{
+        position: absolute;
+        left: 0;
+        right: 0%;
+        bottom: 120px;
+
+        .btn-choose{
+            width: 150px;
+            padding: 10px 0;
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: #fff;
+            border:1px #4cae4c solid;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .edit-list{
+            display: inline-block;
+            margin: 20px 0 0;
+            font-size: 14px;
+        }
+    }
+}
+
+.food-wrap{
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+    background-color: #eee;
+}
+
+
+.footer{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+
+    .mail-link{
+        text-decoration: underline;
+    }
+}
+
+.foods-list{
+    margin: 0 20px;
+    padding: 0 15px;
+    overflow: hidden;
+    background-color: #eee;
+    border-radius: 5px;
+    >li{
+        height: 40px;
+        line-height: 40px;
+    }
+    >li:not(:last-child){
+        border-bottom: 1px #d2d2d2 solid;
+    }
+
+}
+
+.add-food-wrap{
+    @extend .foods-list;
+    margin-top: 15px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.mask{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #444;
+
+    .note-wrap{
+        position: absolute;
+        box-sizing: border-box;
+        top: 30%;
+        left: 50%;
+        width: 240px;
+        margin: 0 0 0 -120px;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 5px;
+
+        .note-content{
+            position: relative;
+
+            .input-name{
+                margin: 0 0 10px;
+                padding: 5px;
+                font-size: 18px;
+                border: 0 none;
+                outline: none;
+                border-bottom: 1px #D2D2D2 solid;
+            }
+
+            .empty-input{
+                position: absolute;
+                top: 7px;
+                right: 10px;
+                width: 16px;
+                height: 16px;
+                line-height: 16px;
+                font-size: 12px;
+                background-color: #888;
+                color: #fff;
+                border-radius: 50%;
+                text-align: center;
+            }
+        }
+
+        .ope-wrap{
+            overflow: hidden;
+            font-size: 14px;
+
+            a{
+                box-sizing: border-box;
+                text-align: center;
+                width: 50%;
+                padding: 10px 0;
+                float: left;
+            }
+            a:first-child{
+                span{
+                    display: inline-block;
+                    width: 100%;
+                    border-right: 1px #D2D2D2 solid;
+                }
+            }
+        }
+    }
+}
